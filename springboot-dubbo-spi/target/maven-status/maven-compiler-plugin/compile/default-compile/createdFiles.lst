@@ -1,0 +1,3 @@
+com\demo\service\IUserService.class
+com\demo\service\IItemService.class
+org\springboot\dubbo\spi\App.class

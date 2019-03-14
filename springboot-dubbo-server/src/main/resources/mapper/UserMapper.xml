@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.IUserDao">
+	<resultMap type="com.demo.domain.User" id="user">
+		<result column="id" property="id"/>
+		<result column="user_name" property="userName"/>
+		<result column="pass_word" property="passWord"/>
+		<result column="age" property="age"/>
+	</resultMap>
+
+	<!-- insert user -->
+    <insert id="insert" parameterType="com.demo.domain.User">
+        INSERT INTO USER(ID,USER_NAME,PASS_WORD,AGE) VALUES(#{id},#{userName},#{passWord},#{age});
+    </insert>
+    
+    <!-- update user -->
+    <update id="update" parameterType="com.demo.domain.User">
+        UPDATE USER SET USER_NAME=#{userName} , PASS_WORD= #{passWord} , AGE = #{age} WHERE ID= #{id}
+    </update>
+    
+    <!-- find user -->
+    <select id="find" parameterType="int" resultMap="user">
+        SELECT ID,USER_NAME,PASS_WORD,AGE FROM USER WHERE ID=#{0}
+    </select>
+    
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM USER WHERE ID=#{0}
+    </delete>
+</mapper>

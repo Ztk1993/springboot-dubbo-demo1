@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="demo-consumer"/>
+
+    <!--zookeeper注册中心 -->
+    <dubbo:registry  protocol="zookeeper" address="localhost:2181" timeout="60000"/>
+
+    <!--关闭服务消费方所有服务的启动检查。dubbo缺省会在启动时检查依赖的服务是否可用，不可用时会抛出异常，阻止Spring初始化完成。-->
+    <dubbo:consumer check="false" />
+
+    <!-- 使用注解方式创建远程服务代理-->
+    <!-- <dubbo:annotation package="com.example.demo.controller"/> -->
+
+    <!-- 使用xml配置方式创建远程服务代理，id即为provider.xml中暴露的服务的id-->
+    <!-- 等同于dubbo:annotation 加上代码里的@Reference注解-->
+    <dubbo:reference id="itemService" interface="com.demo.service.IItemService"/>
+    <dubbo:reference id="userService" interface="com.demo.service.IUserService"/>
+
+
+</beans>
