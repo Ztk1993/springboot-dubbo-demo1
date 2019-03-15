@@ -1,6 +1,9 @@
 package com.demo.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +14,10 @@ import com.demo.service.IUserService;
 @RestController
 public class UserController {
 	
+	private Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
-	private IUserService userService;
+	private IUserService UserServiceImpl;
 	
 	@RequestMapping("/save")
 	public String insert(@RequestParam("userName") String userName,
@@ -22,24 +27,26 @@ public class UserController {
 		user.setPassWord(Integer.parseInt(passWord));
 		user.setAge(11);
 		try {
-			userService.insert(user);
+			UserServiceImpl.insert(user);
+			logger.info("操作结果：{}","成功！！！！");
 			return "保存成功";
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.info("操作结果：{}","异常！！！！");
 			return "保存异常";
 		}
 	}
 	
-	@RequestMapping("/findId")
+	@GetMapping("/findId")
 	public String find(@RequestParam("id") String id){
-		User user = userService.find(Integer.parseInt(id));
+		User user = UserServiceImpl.find(Integer.parseInt(id));
 		return user.toString();
 	}
 	
-	@RequestMapping("/deleteId")
+	@GetMapping("/deleteId")
 	public String delete(@RequestParam("id") String id){
 		try {
-			userService.delete(Integer.parseInt(id));
+			UserServiceImpl.delete(Integer.parseInt(id));
 			return "删除成功";
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.demo</groupId>
   <artifactId>springboot-dubbo-parent</artifactId>
@@ -12,6 +10,7 @@
   	<module>springboot-dubbo-client</module>
   	<module>springboot-dubbo-spi</module>
     <module>springboot-dubbo-domain</module>
+    <module>springboot-dubbo-utils</module>
   </modules>
   <parent>
       <groupId>org.springframework.boot</groupId>
@@ -30,6 +29,12 @@
       <zkclient.version>0.1</zkclient.version>
       <druid.version>1.1.0</druid.version>
       <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+      <commons-lang3.version>3.0</commons-lang3.version>
+      <fastjson.version>1.1.25</fastjson.version>
+      <joda-time.version>2.10.1</joda-time.version>
+      <poi.version>3.16</poi.version>
+      <poi-ooxml.version>3.14</poi-ooxml.version>
+      <jackson.version>2.8.10</jackson.version>
    </properties>
    
    
@@ -47,11 +52,11 @@
         </dependency>
          
 
-         <!--新增后续dubbo项目中所需依赖，dubbo、zk-->
+         <!--新增后续dubbo项目中所�?依赖，dubbo、zk-->
          <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version><!--使用properties中配置的版本�?-->
+            <version>${dubbo.version}</version><!--使用properties中配置的版本�??-->
             <exclusions>
                <exclusion>
                   <groupId>org.springframework</groupId>
@@ -92,6 +97,52 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot-starter.version}</version>
         </dependency>
+        <!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>${joda-time.version}</version>
+		</dependency>
+        
+        <dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>${commons-lang3.version}</version>
+		</dependency>
+		
+		<!--POI-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-ooxml.version}</version>
+        </dependency>
+        <!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
         
       </dependencies>
    </dependencyManagement>

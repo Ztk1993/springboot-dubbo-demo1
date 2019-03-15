@@ -5,6 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo
 http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+
     <!--消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
     <dubbo:application name="demo-consumer"/>
 
@@ -15,7 +16,7 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:consumer check="false" />
 
     <!-- 使用注解方式创建远程服务代理-->
-    <!-- <dubbo:annotation package="com.example.demo.controller"/> -->
+    <!-- <dubbo:annotation package="com.demo.controller"/> -->
 
     <!-- 使用xml配置方式创建远程服务代理，id即为provider.xml中暴露的服务的id-->
     <!-- 等同于dubbo:annotation 加上代码里的@Reference注解-->

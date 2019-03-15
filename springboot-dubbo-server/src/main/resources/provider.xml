@@ -16,7 +16,7 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 暴露dubbo服务的方式一-->
     <!-- 使用注解方式暴露接口，会自动扫描package下所有包中dubbo相关的注解，这样就不用在xml中再针对每个服务接口配置dubbo:service interface-->
-    <!--<dubbo:annotation package="com.example.demo.service"/>-->
+   <!--  <dubbo:annotation package="com.demo.service"/> -->
 	<dubbo:provider timeout="1200000" threadpool="fixed"
 		threads="2000" loadbalance="leastactive" delay="-1" retries="1" />
 
@@ -25,7 +25,5 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
          等同于在类上打@service注解，打了注解就必须要用annotation指定启动扫描路径，使用这种方式，就不需要指定annotation了-->
     <dubbo:service interface="com.demo.service.IItemService" ref="itemService"/>
     <dubbo:service interface="com.demo.service.IUserService" ref="userService"/>
-    <!-- 具体的实现bean，id与上面的ref要一致-->
-<!--     <bean id="itemService" class="com.demo.service.IItemService" /> -->
 
 </beans>
